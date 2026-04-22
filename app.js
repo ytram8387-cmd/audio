@@ -1,23 +1,22 @@
 let userActual = null;
 
-// =======================
-// 🔐 AUTH (LOGIN / CONTROL)
-// =======================
+// 🔐 CONTROL DE SESIÓN (PONLO AQUÍ)
 auth.onAuthStateChanged(user => {
-  if (user) {
+  const pagina = window.location.pathname;
+
+  if (!user) {
+    if (!pagina.includes("login.html")) {
+      window.location.href = "login.html";
+    }
+  } else {
     userActual = user;
 
-    // Si estás en index, carga audios
-    if (window.location.pathname.includes("index.html")) {
-      cargarAudios();
+    if (pagina.includes("login.html")) {
+      window.location.href = "index.html";
     }
 
-  } else {
-    userActual = null;
-
-    // Si NO está logueado, lo manda a login
-    if (window.location.pathname.includes("index.html")) {
-      window.location.href = "login.html";
+    if (pagina.includes("index.html")) {
+      cargarAudios();
     }
   }
 });

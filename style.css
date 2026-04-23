@@ -5,6 +5,11 @@ body {
     text-align: center;
   }
   
+  .login-gif {
+    width: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
   /* CONTENEDOR */
   .container {
     max-width: 1000px;
